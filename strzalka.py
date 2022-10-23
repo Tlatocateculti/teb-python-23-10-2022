@@ -8,7 +8,7 @@ def strzalka(skala=1,powiel=1):
         druk=("  "*skala + "*" + " "*(podstawa-2) + "*" + "  "*skala)*powiel + "\n" + druk
         ilosc-=1
         #ilosc=ilosc-1
-    tmp="**"*skala + "*" + " "*(podstawa-2) + "*" + "**"*skala
+    tmp=("**"*skala + "*" + " "*(podstawa-2) + "*" + "**"*skala)*powiel
     podstawa=len(tmp)-2
     druk=tmp + "\n" + druk
     ilosc=1
@@ -29,3 +29,5 @@ def strzalka(skala=1,powiel=1):
     return druk 
    
 print(strzalka(powiel=2))
+
+
