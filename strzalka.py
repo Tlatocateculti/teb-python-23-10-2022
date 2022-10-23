@@ -1,21 +1,30 @@
-def strzalka(skala=1,powiel=1):
+def strzalka(skala=1,powiel=1,dol=False):
     druk=''
     druk="**"*2*skala+"*"*skala
     podstawa=len(druk)
-    druk=("  "*skala + druk + "  "*skala)*powiel
+    druk=("  "*skala + druk + "  "*skala)*powiel+"\n"
     ilosc=skala*2
     while (ilosc>0):
-        druk=("  "*skala + "*" + " "*(podstawa-2) + "*" + "  "*skala)*powiel + "\n" + druk
+        tmp=("  "*skala + "*" + " "*(podstawa-2) + "*" + "  "*skala)*powiel+"\n"
+        druk= druk+tmp if dol else tmp+druk
+        """
+        if dol==True:
+            druk=druk+tmp
+        else:
+            druk=tmp+druk
+        """
         ilosc-=1
-        #ilosc=ilosc-1
     tmp="**"*skala + "*" + " "*(podstawa-2) + "*" + "**"*skala
     podstawa=len(tmp)-2
-    druk=tmp*powiel + "\n" + druk
+    tmp=tmp*powiel + "\n"
+    druk= druk+tmp if dol else tmp+druk
     ilosc=1
     while(podstawa-(ilosc*2)>0):
-        druk=(" "*ilosc + "*" + " "*(podstawa-(ilosc*2)) + "*" + " "*ilosc)*powiel + "\n" + druk
+        tmp=(" "*ilosc + "*" + " "*(podstawa-(ilosc*2)) + "*" + " "*ilosc)*powiel + "\n"
+        druk= druk+tmp if dol else tmp+druk
         ilosc+=1
-    druk=(" "*ilosc+("**" if skala%2==0 else "*")+" "*ilosc)*powiel + "\n" + druk
+    tmp=(" "*ilosc+("**" if skala%2==0 else "*")+" "*ilosc)*powiel + "\n"
+    druk= druk+tmp if dol else tmp+druk
     """
     tmp=" "*ilosc
     if (skala%2==0):
@@ -28,6 +37,10 @@ def strzalka(skala=1,powiel=1):
     
     return druk 
    
-print(strzalka(powiel=5))
+print(strzalka(skala=2,powiel=2,dol=True))
+print(strzalka(powiel=4))
+print(strzalka(skala=3,dol=True))
+
+
 
 
